@@ -1,5 +1,5 @@
-var PeopleDAO = (function() {
-    var resourcePath = "rest/people/";
+var PetsDAO = (function() {
+    var resourcePath = "rest/pets/";
     var requestByAjax = function(data, done, fail, always) {
 	done = typeof done !== 'undefined' ? done : function() {};
 	fail = typeof fail !== 'undefined' ? fail : function() {};
@@ -15,32 +15,32 @@ var PeopleDAO = (function() {
 	$.ajax(data).done(done).fail(fail).always(always);
     };
 
-    function PeopleDAO() {
-	this.listPeople = function(done, fail, always) {
-		console.log('ajax people');
+    function PetsDAO() {
+	this.listPets = function(done, fail, always) {
+		console.log('ajax');
 	    requestByAjax({
 		url : resourcePath,
 		type : 'GET'
 	    }, done, fail, always);
 	};
 
-	this.addPerson = function(person, done, fail, always) {
+	this.addPet = function(pet, done, fail, always) {
 	    requestByAjax({
 		url : resourcePath,
 		type : 'POST',
-		data : person
+		data : pet
 	    }, done, fail, always);
 	};
 
-	this.modifyPerson = function(person, done, fail, always) {
+	this.modifyPet = function(pet, done, fail, always) {
 	    requestByAjax({
-		url : resourcePath + person.id,
+		url : resourcePath + pet.id,
 		type : 'PUT',
-		data : person
+		data : pet
 	    }, done, fail, always);
 	};
 
-	this.deletePerson = function(id, done, fail, always) {
+	this.deletePet = function(id, done, fail, always) {
 	    requestByAjax({
 		url : resourcePath + id,
 		type : 'DELETE',
@@ -48,5 +48,5 @@ var PeopleDAO = (function() {
 	};
     }
 
-    return PeopleDAO;
+    return PetsDAO;
 })();

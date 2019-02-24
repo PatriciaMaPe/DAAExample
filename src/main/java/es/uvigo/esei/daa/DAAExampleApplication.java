@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import es.uvigo.esei.daa.rest.PetsResource;
 import es.uvigo.esei.daa.rest.PeopleResource;
 import es.uvigo.esei.daa.rest.UsersResource;
 
@@ -25,6 +26,7 @@ public class DAAExampleApplication extends Application {
 	@Override
 	public Set<Class<?>> getClasses() {
 		return Stream.of(
+			PetsResource.class,
 			PeopleResource.class,
 			UsersResource.class
 		).collect(toSet());

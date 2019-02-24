@@ -15,23 +15,22 @@
 				<a href="#" class="navbar-brand d-flex align-items-center">
 					<strong>DAA	Example</strong>
 				</a>
-				<button id="pets" class="btn btn-dark">Mascotas</button>
+				<button id="people" class="btn btn-dark">Personas</button>
 				<button id="logout" class="btn btn-dark">Cerrar sesión</button>
 			</div>
 		</div>
 	</header>
 
 	<div class="container">
-		<div id="people-container">
-			<h1 class="display-5 mt-3 mb-3">Personas</h1>
+		<div id="pets-container">
+			<h1 class="display-5 mt-3 mb-3">Mascotas</h1>
 		</div>
 	</div>
-
 	
 	<script type="text/javascript"
 		src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-	<script type="text/javascript" src="js/dao/people.js"></script>
-	<script type="text/javascript" src="js/view/people.js"></script>
+	<script type="text/javascript" src="js/dao/pets.js"></script>
+	<script type="text/javascript" src="js/view/pets.js"></script>
 	<script type="text/javascript" src="js/login.js"></script>
 	<script type="text/javascript">
 	$(document).ready(
@@ -41,17 +40,19 @@
 				doLogout();
 		    });
 		    
-		    $('#pets').click(function(event) {
+		    $('#people').click(function(event) {
 				event.preventDefault();
-				window.location = 'mainPets.html';
-				
+				window.location = 'main.html';
 		    });
-			console.log('view');
-		    var viewp = new PeopleView(new PeopleDAO(),
-		    	'people-container', 'people-container'
+		    
+
+		    var view = new PetsView(new PetsDAO(),
+		    	'pets-container', 'pets-container'
 	    	);
-		    console.log('view2');
-		    viewp.init();
+		    
+
+
+		    view.init();
 		});
     </script>
 </body>

@@ -10,13 +10,15 @@ var PeopleView = (function() {
 	var listQuery = '#' + listId;
 	
 	function PeopleView(peopleDao, formContainerId, listContainerId) {
+		console.log('view2.5');
 		dao = peopleDao;
 		self = this;
-		
+		console.log('view3');
 		insertPeopleForm($('#' + formContainerId));
 		insertPeopleList($('#' + listContainerId));
 		
 		this.init = function() {
+			console.log('view4');
 			dao.listPeople(function(people) {
 				$.each(people, function(key, person) {
 					appendToTable(person);
