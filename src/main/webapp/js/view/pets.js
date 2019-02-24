@@ -138,12 +138,12 @@ var PetsView = (function() {
 			'<div class="table-responsive">\
 				<table id="' + listId + '" class="table">\
 				<thead>\
-					<tr class="row">\
-						<th class="col-sm-3">Nombre</th>\
-						<th class="col-sm-2">Especie</th>\
-						<th class="col-sm-2">Raza</th>\
-						<th class="col-sm-2">Dueño</th>\
-						<th class="col-sm-3">&nbsp;</th>\
+					<tr>\
+						<th>Nombre</th>\
+						<th>Especie</th>\
+						<th>Raza</th>\
+						<th>Dueño</th>\
+						<th>&nbsp;</th>\
 					</tr>\
 				</thead>\
 				<tbody>\
@@ -157,7 +157,7 @@ var PetsView = (function() {
 			'<form id="' + formId + '" class="mb-5 mb-10">\
 				<input name="id" type="hidden" value=""/>\
 				<div class="row">\
-					<div class="col-sm-3">\
+					<div class="col-sm-2">\
 						<input name="name" type="text" value="" placeholder="Nombre" class="form-control" required/>\
 					</div>\
 					<div class="col-sm-2">\
@@ -169,7 +169,7 @@ var PetsView = (function() {
 					<div class="col-sm-3">\
 						<input name="owner" type="text" value="" placeholder="Dueño" class="form-control" required/>\
 					</div>\
-					<div class="col-sm-2">\
+					<div class="col-sm-3">\
 						<input id="btnSubmit" type="submit" value="Crear" class="btn btn-primary" />\
 						<input id="btnClear" type="reset" value="Limpiar" class="btn" />\
 					</div>\
@@ -179,12 +179,12 @@ var PetsView = (function() {
 	};
 
 	var createPetRow = function(pet) {
-		return '<tr id="pet-'+ pet.id +'" class="row">\
-			<td class="name col-sm-3">' + pet.name + '</td>\
-			<td class="species col-sm-2">' + pet.species + '</td>\
-			<td class="breed col-sm-2">' + pet.breed + '</td>\
-			<td class="owner col-sm-2">' + pet.owner + '</td>\
-			<td class="col-sm-3">\
+		return '<tr id="pet-'+ pet.id +'"">\
+			<td>' + pet.name + '</td>\
+			<td>' + pet.species + '</td>\
+			<td>' + pet.breed + '</td>\
+			<td>' + pet.owner + '</td>\
+			<td>\
 				<a class="edit btn btn-primary" href="#">Editar</a>\
 				<a class="delete btn btn-warning" href="#">Eliminar</a>\
 			</td>\
