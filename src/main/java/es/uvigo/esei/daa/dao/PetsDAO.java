@@ -175,13 +175,14 @@ public class PetsDAO extends DAO{
 		}
 		
 		try (Connection conn = this.getConnection()) {
-			final String query = "UPDATE pet SET name=?, species=?, breed=?, owner=? WHERE id=?";
+			final String query = "UPDATE pets SET name=?, species=?, breed=?, owner=? WHERE id=?";
 			
 			try (PreparedStatement statement = conn.prepareStatement(query)) {
 				statement.setString(1, pet.getName());
 				statement.setString(2, pet.getSpecies());
-				statement.setString(2, pet.getBreed());
-				statement.setInt(3, pet.getOwner());
+				statement.setString(3, pet.getBreed());
+				statement.setInt(4, pet.getOwner());
+				statement.setInt(5, pet.getId());
 				
 				if (statement.executeUpdate() != 1) {
 					throw new IllegalArgumentException("name, species and owner can't be null");
@@ -204,7 +205,7 @@ public class PetsDAO extends DAO{
 	public void delete(int id)
 	throws DAOException, IllegalArgumentException {
 		try (final Connection conn = this.getConnection()) {
-			final String query = "DELETE FROM pet WHERE id=?";
+			final String query = "DELETE FROM pets WHERE id=?";
 			
 			try (final PreparedStatement statement = conn.prepareStatement(query)) {
 				statement.setInt(1, id);
@@ -235,9 +236,7 @@ public class PetsDAO extends DAO{
 			row.getString("name"),
 			row.getString("species"),
 			row.getString("breed"),
-			row.getInt("owner")
-			//new Person(44,"hola", "lala")
-			//peopleDAO.get(row.getInt("owner"))	
+			row.getInt("owner")	
 			
 		);
 	}

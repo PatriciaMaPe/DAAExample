@@ -39,12 +39,12 @@ var PetsView = (function() {
 				var pet = self.getPetInForm();
 				
 				if (self.isEditing()) {
+					console.log(pet.id, pet.breed, pet.species, pet.owner);
 					dao.modifyPet(pet,
 						function(pet) {
 							$('#pet-' + pet.id + ' td.name').text(pet.name);
-							$('#pet-' + pet.species + ' td.species').text(pet.species);
-							$('#pet-' + pet.breed + ' td.breed').text(pet.breed);
-							$('#pet-' + pet.owner + ' td.owner').text(pet.owner);
+							$('#pet-' + pet.id + ' td.species').text(pet.species);
+							$('#pet-' + pet.id + ' td.breed').text(pet.breed);
 							self.resetForm();
 						},
 						showErrorMessage,
@@ -74,7 +74,7 @@ var PetsView = (function() {
 				'name': form.find('input[name="name"]').val(),
 				'species': form.find('input[name="species"]').val(),
 				'breed': form.find('input[name="breed"]').val(),
-				'owner': form.find('input[name="owner"]').val()
+				'owner': idOwner
 			};
 		};
 
@@ -86,8 +86,7 @@ var PetsView = (function() {
 					'id': id,
 					'name': row.find('td.name').text(),
 					'species': row.find('td.species').text(),
-					'breed': row.find('td.breed').text(),
-					'owner': row.find('td.owner').text()
+					'breed': row.find('td.breed').text()
 					
 				};
 			} else {
@@ -105,7 +104,6 @@ var PetsView = (function() {
 				form.find('input[name="name"]').val(row.find('td.name').text());
 				form.find('input[name="species"]').val(row.find('td.species').text());
 				form.find('input[name="breed"]').val(row.find('td.breed').text());
-				form.find('input[name="owner"]').val(row.find('td.owner').text());
 				
 				$('input#btnSubmit').val('Modificar');
 			}
@@ -150,7 +148,6 @@ var PetsView = (function() {
 						<th>Nombre</th>\
 						<th>Especie</th>\
 						<th>Raza</th>\
-						<th>Dueño</th>\
 						<th>&nbsp;</th>\
 					</tr>\
 				</thead>\
@@ -175,9 +172,6 @@ var PetsView = (function() {
 						<input name="breed" type="text" value="" placeholder="Raza" class="form-control" required/>\
 					</div>\
 					<div class="col-sm-3">\
-						<input name="owner" type="text" value="" placeholder="Dueño" class="form-control" required/>\
-					</div>\
-					<div class="col-sm-3">\
 						<input id="btnSubmit" type="submit" value="Crear" class="btn btn-primary" />\
 						<input id="btnClear" type="reset" value="Limpiar" class="btn" />\
 					</div>\
@@ -188,10 +182,9 @@ var PetsView = (function() {
 
 	var createPetRow = function(pet) {
 		return '<tr id="pet-'+ pet.id +'"">\
-			<td>' + pet.name + '</td>\
-			<td>' + pet.species + '</td>\
-			<td>' + pet.breed + '</td>\
-			<td>' + pet.owner + '</td>\
+			<td class="name">' + pet.name + '</td>\
+			<td class="species">' + pet.species + '</td>\
+			<td class="breed">' + pet.breed + '</td>\
 			<td>\
 				<a class="edit btn btn-primary" href="#">Editar</a>\
 				<a class="delete btn btn-warning" href="#">Eliminar</a>\
