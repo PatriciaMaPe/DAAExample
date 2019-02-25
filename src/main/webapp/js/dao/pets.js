@@ -17,11 +17,19 @@ var PetsDAO = (function() {
 
     function PetsDAO() {
 	this.listPets = function(done, fail, always) {
-		console.log('ajax');
 	    requestByAjax({
 		url : resourcePath,
 		type : 'GET'
 	    }, done, fail, always);
+	};
+	
+	this.listPetsOwner = function(id, done, fail, always) {
+	    requestByAjax({
+		url : resourcePath + "person/" + id,
+		type : 'GET'
+	    }, done, fail, always);
+		localStorage.setItem('personId', id);
+		
 	};
 
 	this.addPet = function(pet, done, fail, always) {

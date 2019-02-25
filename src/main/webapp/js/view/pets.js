@@ -9,9 +9,12 @@ var PetsView = (function() {
 	var formQuery = '#' + formId;
 	var listQuery = '#' + listId;
 	
-	function PetsView(petsDao, formContainerId, listContainerId) {
+	var idOwner;
+	
+	function PetsView(petsDao, id, formContainerId, listContainerId) {
 		
 		dao = petsDao;
+		idOwner = id;
 		self = this;
 		
 		insertPetsForm($('#' + formContainerId));
@@ -19,11 +22,16 @@ var PetsView = (function() {
 		
 		this.init = function() {
 			
-			dao.listPets(function(pets) {
+			dao.listPetsOwner(idOwner,function(pets) {
 				$.each(pets, function(key, pet) {
 					appendToTable(pet);
 				});
 			});
+			/*dao.listPets(function(pets) {
+				$.each(pets, function(key, pet) {
+					appendToTable(pet);
+				});
+			});*/
 			
 			// La acción por defecto de enviar formulario (submit) se sobreescribe
 			// para que el envío sea a través de AJAX
@@ -36,7 +44,7 @@ var PetsView = (function() {
 							$('#pet-' + pet.id + ' td.name').text(pet.name);
 							$('#pet-' + pet.species + ' td.species').text(pet.species);
 							$('#pet-' + pet.breed + ' td.breed').text(pet.breed);
-							$('#pet-' + pet.owner + ' td.breed').text(pet.owner);
+							$('#pet-' + pet.owner + ' td.owner').text(pet.owner);
 							self.resetForm();
 						},
 						showErrorMessage,

@@ -93,6 +93,17 @@ public class PetsResource {
 			return Response.serverError().entity(e.getMessage()).build();
 		}
 	}
+	
+	@GET
+	@Path("/person/{id}")
+	public Response listPetsOwner(@PathParam("id") int id) {
+		try {
+			return Response.ok(this.dao.listPetsOwner(id)).build();
+		} catch (DAOException e) {
+			LOG.log(Level.SEVERE, "Error listing pets", e);
+			return Response.serverError().entity(e.getMessage()).build();
+		}
+	}
 
 	/**
 	 * Creates a new person in the system.

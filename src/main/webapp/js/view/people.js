@@ -10,15 +10,15 @@ var PeopleView = (function() {
 	var listQuery = '#' + listId;
 	
 	function PeopleView(peopleDao, formContainerId, listContainerId) {
-		console.log('view2.5');
+		
 		dao = peopleDao;
 		self = this;
-		console.log('view3');
+		
 		insertPeopleForm($('#' + formContainerId));
 		insertPeopleList($('#' + listContainerId));
 		
 		this.init = function() {
-			console.log('view4');
+			
 			dao.listPeople(function(people) {
 				$.each(people, function(key, person) {
 					appendToTable(person);
@@ -104,6 +104,20 @@ var PeopleView = (function() {
 				);
 			}
 		};
+		
+		this.listPets = function(idOwner) {
+			$('div#people-container').remove();
+			$('div#main-containter').append('<div id="pets-container">\
+										<h1 class="display-5 mt-3 mb-3">Mascotas</h1>\
+									  </div>');
+			
+			var view = new PetsView(new PetsDAO(), idOwner,
+			    	'pets-container', 'pets-container'
+		    );
+			view.init();
+		
+			
+		};
 
 		this.isEditing = function() {
 			return $(formQuery + ' input[name="id"]').val() != "";
@@ -167,6 +181,7 @@ var PeopleView = (function() {
 			<td class="col-sm-3">\
 				<a class="edit btn btn-primary" href="#">Editar</a>\
 				<a class="delete btn btn-warning" href="#">Eliminar</a>\
+				<a class="listPets btn btn-secondary" href="#">Mascotas</a>\
 			</td>\
 		</tr>';
 	};
@@ -182,6 +197,10 @@ var PeopleView = (function() {
 		
 		$('#person-' + person.id + ' a.delete').click(function() {
 			self.deletePerson(person.id);
+		});
+		
+		$('#person-' + person.id + ' a.listPets').click(function() {
+			self.listPets(person.id);
 		});
 	};
 

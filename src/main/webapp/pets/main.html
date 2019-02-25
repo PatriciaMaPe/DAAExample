@@ -21,9 +21,9 @@
 		</div>
 	</header>
 
-	<div id="main-containter" class="container">
-		<div id="people-container">
-			<h1 class="display-5 mt-3 mb-3">Personas</h1>
+	<div class="container">
+		<div id="pets-container">
+			<h1 class="display-5 mt-3 mb-3">Mascotas</h1>
 		</div>
 	</div>
 
@@ -31,8 +31,6 @@
 	<script type="text/javascript"
 		src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 	<script type="text/javascript" src="js/dao/people.js"></script>
-	<script type="text/javascript" src="js/dao/pets.js"></script>
-	<script type="text/javascript" src="js/view/pets.js"></script>
 	<script type="text/javascript" src="js/view/people.js"></script>
 	<script type="text/javascript" src="js/login.js"></script>
 	<script type="text/javascript">
@@ -49,7 +47,7 @@
 				
 		    });
 			
-		    var view = new PeopleView(new PeopleDAO(),
+		    var view = new PetsView(new PeopleDAO(),
 		    	'people-container', 'people-container'
 	    	);
 		    

@@ -21,11 +21,11 @@ import es.uvigo.esei.daa.entities.Pet;
  */
 public class PetsDAO extends DAO{
 	private final static Logger LOG = Logger.getLogger(PetsDAO.class.getName());
-	/*private PeopleDAO peopleDAO;
+	private PeopleDAO peopleDAO;
 	
 	public PetsDAO() {
 		this.peopleDAO = null;
-	}*/
+	}
 	
 	/**
 	 * Returns a pet stored persisted in the system.

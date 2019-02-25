@@ -17,7 +17,6 @@ var PeopleDAO = (function() {
 
     function PeopleDAO() {
 	this.listPeople = function(done, fail, always) {
-		console.log('ajax people');
 	    requestByAjax({
 		url : resourcePath,
 		type : 'GET'
