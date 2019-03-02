@@ -28,7 +28,7 @@ var PetsDAO = (function() {
 		url : resourcePath + "person/" + id,
 		type : 'GET'
 	    }, done, fail, always);
-		localStorage.setItem('personId', id);
+		//localStorage.setItem('personId', id);
 		
 	};
 

@@ -108,8 +108,9 @@ var PeopleView = (function() {
 		this.listPets = function(idOwner) {
 			$('div#people-container').remove();
 			$('div#main-containter').append('<div id="pets-container">\
-										<h1 class="display-5 mt-3 mb-3">Mascotas</h1>\
-									  </div>');
+								<h1 class="display-5 mt-3 mb-3">Mascotas</h1>\
+								<button id="btnBack" type="button" class="btn btn-outline-dark">Volver</button>\
+								</div>');
 			
 			var view = new PetsView(new PetsDAO(), idOwner,
 			    	'pets-container', 'pets-container'

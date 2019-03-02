@@ -65,6 +65,9 @@ var PetsView = (function() {
 			});
 			
 			$('#btnClear').click(this.resetForm);
+			
+			$('#btnBack').click(this.backToPeople);
+
 		};
 
 		this.getPetInForm = function() {
@@ -137,6 +140,11 @@ var PetsView = (function() {
 			$(formQuery + ' input[name="id"]').val('');
 			$('#btnSubmit').val('Crear');
 		};
+		
+		this.backToPeople = function() {
+			window.location = 'main.html';
+		};
+		
 	};
 	
 	var insertPetsList = function(parent) {
@@ -204,6 +212,8 @@ var PetsView = (function() {
 		$('#pet-' + pet.id + ' a.delete').click(function() {
 			self.deletePet(pet.id);
 		});
+		
+		
 	};
 
 	var appendToTable = function(pet) {
@@ -211,6 +221,7 @@ var PetsView = (function() {
 			.append(createPetRow(pet));
 		addRowListeners(pet);
 	};
+	
 	
 	return PetsView;
 })();
