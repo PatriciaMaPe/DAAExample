@@ -20,7 +20,7 @@ CREATE TABLE `daaexample`.`pets` (
 	`species` varchar(20) NOT NULL,
 	`breed` varchar(20),
 	`owner` int NOT NULL,
-	foreign key(owner) references people(id),
+	foreign key(owner) references people(id) ON DELETE CASCADE,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -43,6 +43,12 @@ INSERT INTO `daaexample`.`pets` (`id`,`name`,`species`, `breed`, `owner`)
 VALUES (0,'Lukas','Perro', 'Caniche', 3);
 INSERT INTO `daaexample`.`pets` (`id`,`name`,`species`, `breed`, `owner`)
 VALUES (0,'Hamburguesa','Perro', 'Chihuahua', 4);
+INSERT INTO `daaexample`.`pets` (`id`,`name`,`species`, `breed`, `owner`)
+VALUES (0,'Luna','Gato', 'Angora', 5);
+INSERT INTO `daaexample`.`pets` (`id`,`name`,`species`, `breed`, `owner`)
+VALUES (0,'Choco','Perro', 'Mastín', 1);
+INSERT INTO `daaexample`.`pets` (`id`,`name`,`species`, `breed`, `owner`)
+VALUES (0,'Princesa','Perro', 'Galgo', 4);
 
 -- The password for each user is its login suffixed with "pass". For example, user "admin" has the password "adminpass".
 INSERT INTO `daaexample`.`users` (`login`,`password`,`role`)

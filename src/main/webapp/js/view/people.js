@@ -95,7 +95,7 @@ var PeopleView = (function() {
 		};
 		
 		this.deletePerson = function(id) {
-			if (confirm('Está a punto de eliminar a una persona. ¿Está seguro de que desea continuar?')) {
+			if (confirm('Está a punto de eliminar a una persona y también a sus mascotas. ¿Está seguro de que desea continuar?')) {
 				dao.deletePerson(id,
 					function() {
 						$('tr#person-' + id).remove();

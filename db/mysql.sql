@@ -20,7 +20,7 @@ CREATE TABLE `daaexample`.`pets` (
 	`species` varchar(20) NOT NULL,
 	`breed` varchar(20),
 	`owner` int NOT NULL,
-	foreign key(owner) references people(id),
+	foreign key(owner) references people(id) ON DELETE CASCADE,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
