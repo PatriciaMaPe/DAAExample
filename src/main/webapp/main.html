@@ -15,7 +15,6 @@
 				<a href="#" class="navbar-brand d-flex align-items-center">
 					<strong>DAA	Example</strong>
 				</a>
-				<button id="pets" class="btn btn-dark">Mascotas</button>
 				<button id="logout" class="btn btn-dark">Cerrar sesión</button>
 			</div>
 		</div>
@@ -43,13 +42,6 @@
 				doLogout();
 		    });
 		    
-		    $('#pets').click(function(event) {
-				event.preventDefault();
-				window.location = 'mainPets.html';
-				
-		    });
-		    
-		   
 			
 		    var view = new PeopleView(new PeopleDAO(),
 		    	'people-container', 'people-container'

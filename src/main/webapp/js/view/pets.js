@@ -27,11 +27,6 @@ var PetsView = (function() {
 					appendToTable(pet);
 				});
 			});
-			/*dao.listPets(function(pets) {
-				$.each(pets, function(key, pet) {
-					appendToTable(pet);
-				});
-			});*/
 			
 			// La acción por defecto de enviar formulario (submit) se sobreescribe
 			// para que el envío sea a través de AJAX
