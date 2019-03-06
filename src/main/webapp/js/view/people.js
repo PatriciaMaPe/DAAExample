@@ -105,11 +105,11 @@ var PeopleView = (function() {
 			}
 		};
 		
-		this.listPets = function(idOwner) {
+		this.listPets = function(idOwner, name, surname) {
 			$('div#people-container').remove();
 			$('div#main-containter').append('<div id="pets-container">\
-								<h1 class="display-5 mt-3 mb-3">Mascotas</h1>\
 								<button id="btnBack" type="button" class="btn btn-outline-dark">Volver</button>\
+								<h1 class="display-5 mt-3 mb-3">Mascotas de ' + name + ' ' + surname + '</h1>\
 								</div>');
 			
 			var view = new PetsView(new PetsDAO(), idOwner,
@@ -201,7 +201,7 @@ var PeopleView = (function() {
 		});
 		
 		$('#person-' + person.id + ' a.listPets').click(function() {
-			self.listPets(person.id);
+			self.listPets(person.id, person.name, person.surname);
 		});
 	};
 

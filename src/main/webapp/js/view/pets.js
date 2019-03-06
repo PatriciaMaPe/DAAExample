@@ -133,7 +133,7 @@ var PetsView = (function() {
 		this.resetForm = function() {
 			$(formQuery)[0].reset();
 			$(formQuery + ' input[name="id"]').val('');
-			$('#btnSubmit').val('Crear');
+			$('#btnSubmit').val('Adoptar');
 		};
 		
 		this.backToPeople = function() {
@@ -175,7 +175,7 @@ var PetsView = (function() {
 						<input name="breed" type="text" value="" placeholder="Raza" class="form-control" required/>\
 					</div>\
 					<div class="col-sm-3">\
-						<input id="btnSubmit" type="submit" value="Crear" class="btn btn-primary" />\
+						<input id="btnSubmit" type="submit" value="Adoptar" class="btn btn-primary" />\
 						<input id="btnClear" type="reset" value="Limpiar" class="btn" />\
 					</div>\
 				</div>\

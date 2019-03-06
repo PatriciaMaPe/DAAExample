@@ -8,6 +8,7 @@ function doLogin(login, password) {
     })
     .done(function() {
 	localStorage.setItem('authorization-token', btoa(login + ":" + password));
+	localStorage.setItem('userLogin', login);
 	window.location = 'main.html';
     })
     .fail(function() {
