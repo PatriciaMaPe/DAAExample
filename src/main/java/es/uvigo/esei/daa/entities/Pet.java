@@ -139,5 +139,10 @@ public class Pet{
 		return true;
 	}
 	
+	@Override
+	public String toString() {
+		return "Mascota " + this.id + ": " + this.name + " " + this.species + " " + this.breed + " " + this.owner;
+	}
+	
 	
 }

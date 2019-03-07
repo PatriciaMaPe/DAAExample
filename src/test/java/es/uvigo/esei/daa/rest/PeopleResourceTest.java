@@ -1,6 +1,7 @@
 package es.uvigo.esei.daa.rest;
 
 import static es.uvigo.esei.daa.dataset.PeopleDataset.existentId;
+import static es.uvigo.esei.daa.dataset.PetsDataset.existentIdFromExistentIdOwner;
 import static es.uvigo.esei.daa.dataset.PeopleDataset.existentPerson;
 import static es.uvigo.esei.daa.dataset.PeopleDataset.newName;
 import static es.uvigo.esei.daa.dataset.PeopleDataset.newPerson;
@@ -107,7 +108,7 @@ public class PeopleResourceTest extends JerseyTest {
 	}
 
 	@Test
-	@ExpectedDatabase("/datasets/dataset-add.xml")
+	@ExpectedDatabase("/datasets/dataset-add-person.xml")
 	public void testAdd() throws IOException {
 		final Form form = new Form();
 		form.param("name", newName());
@@ -148,7 +149,7 @@ public class PeopleResourceTest extends JerseyTest {
 	}
 
 	@Test
-	@ExpectedDatabase("/datasets/dataset-modify.xml")
+	@ExpectedDatabase("/datasets/dataset-modify-person.xml")
 	public void testModify() throws IOException {
 		final Form form = new Form();
 		form.param("name", newName());
@@ -206,7 +207,7 @@ public class PeopleResourceTest extends JerseyTest {
 	}
 
 	@Test
-	@ExpectedDatabase("/datasets/dataset-delete.xml")
+	@ExpectedDatabase("/datasets/dataset-delete-person.xml")
 	public void testDelete() throws IOException {
 		final Response response = target("people/" + existentId()).request().delete();
 		
@@ -215,6 +216,13 @@ public class PeopleResourceTest extends JerseyTest {
 		final Integer deletedId = response.readEntity(Integer.class);
 		
 		assertThat(deletedId, is(equalTo(existentId())));
+		
+		final Response responsePets = target("pets/" + 4).request().delete();
+		assertThat(responsePets, hasOkStatus());
+		
+		final Integer deletedPetId = responsePets.readEntity(Integer.class);
+		assertThat(deletedPetId, is(equalTo(existentIdFromExistentIdOwner())));
+		
 	}
 
 	@Test

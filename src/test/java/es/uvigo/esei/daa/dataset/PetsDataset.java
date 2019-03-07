@@ -33,6 +33,17 @@ public final class PetsDataset {
 		.toArray(Pet[]::new);
 	}
 	
+	public static Pet[] petsWithoutOwner(int ... ids) {
+		Arrays.sort(ids);
+		
+		final Predicate<Pet> hasValidId = pet ->
+			binarySearch(ids, pet.getOwner()) < 0;
+		
+		return stream(pets())
+			.filter(hasValidId)
+		.toArray(Pet[]::new);
+	}
+	
 	public static Pet pet(int id) {
 		return stream(pets())
 			.filter(pet -> pet.getId() == id)
@@ -50,6 +61,10 @@ public final class PetsDataset {
 
 	public static int existentIdOwner() {
 		return 5;
+	}
+	
+	public static int existentIdFromExistentIdOwner() {
+		return 4;
 	}
 	
 	public static int nonExistentIdOwner() {

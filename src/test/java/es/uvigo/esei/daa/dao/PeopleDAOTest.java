@@ -2,7 +2,8 @@ package es.uvigo.esei.daa.dao;
 
 import static es.uvigo.esei.daa.dataset.PeopleDataset.existentId;
 import static es.uvigo.esei.daa.dataset.PetsDataset.existentIdOwner;
-import static es.uvigo.esei.daa.dataset.PetsDataset.petsWithout;
+import static es.uvigo.esei.daa.dataset.PetsDataset.petsWithoutOwner;
+import static es.uvigo.esei.daa.dataset.PetsDataset.*;
 import static es.uvigo.esei.daa.dataset.PeopleDataset.existentPerson;
 import static es.uvigo.esei.daa.dataset.PeopleDataset.newName;
 import static es.uvigo.esei.daa.dataset.PeopleDataset.newPerson;
@@ -31,6 +32,7 @@ import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
 
 import es.uvigo.esei.daa.entities.Person;
+import es.uvigo.esei.daa.entities.Pet;
 import es.uvigo.esei.daa.listeners.ApplicationContextBinding;
 import es.uvigo.esei.daa.listeners.ApplicationContextJndiBindingTestExecutionListener;
 import es.uvigo.esei.daa.listeners.DbManagement;
@@ -81,12 +83,13 @@ public class PeopleDAOTest {
 	}
 
 	@Test
-	@ExpectedDatabase("/datasets/dataset-delete.xml")
+	@ExpectedDatabase("/datasets/dataset-delete-person.xml")
 	public void testDelete() throws DAOException {
 		this.dao.delete(existentId());
+		this.daoPets.delete(existentIdFromExistentIdOwner());
 
 		assertThat(this.dao.list(), containsPeopleInAnyOrder(peopleWithout(existentId())));
-		assertThat(this.daoPets.list(), containsPetsInAnyOrder(petsWithout(existentIdOwner())));
+		assertThat(this.daoPets.list(), containsPetsInAnyOrder(petsWithout(existentIdFromExistentIdOwner())));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -95,7 +98,7 @@ public class PeopleDAOTest {
 	}
 
 	@Test
-	@ExpectedDatabase("/datasets/dataset-modify.xml")
+	@ExpectedDatabase("/datasets/dataset-modify-person.xml")
 	public void testModify() throws DAOException {
 		final Person person = existentPerson();
 		person.setName(newName());
@@ -119,7 +122,7 @@ public class PeopleDAOTest {
 	}
 
 	@Test
-	@ExpectedDatabase("/datasets/dataset-add.xml")
+	@ExpectedDatabase("/datasets/dataset-add-person.xml")
 	public void testAdd() throws DAOException {
 		final Person person = this.dao.add(newName(), newSurname());
 		

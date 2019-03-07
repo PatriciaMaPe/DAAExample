@@ -138,7 +138,7 @@ public class PetsDAOUnitTest extends DatabaseQueryUnitTest{
 		petsDAO.add(newName(), null, newBreed(), newOwner());
 	}
 	
-	@Ignore
+	@Ignore("Error NullPointerException")
 	public void testAddNullBreed() throws Exception {
 		replayAll();
 		
