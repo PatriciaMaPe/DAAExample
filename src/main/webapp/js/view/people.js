@@ -144,9 +144,10 @@ var PeopleView = (function() {
 			'<table id="' + listId + '" class="table">\
 				<thead>\
 					<tr class="row">\
-						<th class="col-sm-4">Nombre</th>\
+						<th class="col-sm-3">Nombre</th>\
 						<th class="col-sm-5">Apellido</th>\
-						<th class="col-sm-3">&nbsp;</th>\
+						<th class="col-sm-2">&nbsp;</th>\
+						<th class="col-sm-2">&nbsp;</th>\
 					</tr>\
 				</thead>\
 				<tbody>\
@@ -177,13 +178,15 @@ var PeopleView = (function() {
 
 	var createPersonRow = function(person) {
 		return '<tr id="person-'+ person.id +'" class="row">\
-			<td class="name col-sm-4">' + person.name + '</td>\
+			<td class="name col-sm-3">' + person.name + '</td>\
 			<td class="surname col-sm-5">' + person.surname + '</td>\
-			<td class="col-sm-3">\
+			<td class="col-sm-2">\
 				<a class="edit btn btn-primary" href="#">Editar</a>\
 				<a class="delete btn btn-warning" href="#">Eliminar</a>\
-				<a class="listPets btn btn-secondary" href="#">Mascotas</a>\
 			</td>\
+			<td class="col-sm-2">\
+			<a class="listPets btn btn-secondary" href="#">Mascotas</a>\
+		</td>\
 		</tr>';
 	};
 

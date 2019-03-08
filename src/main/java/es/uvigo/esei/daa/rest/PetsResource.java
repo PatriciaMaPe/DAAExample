@@ -17,10 +17,9 @@ import javax.ws.rs.core.Response;
 import es.uvigo.esei.daa.dao.DAOException;
 import es.uvigo.esei.daa.dao.PetsDAO;
 import es.uvigo.esei.daa.entities.Pet;
-import es.uvigo.esei.daa.entities.Person;
 
 /**
- * REST resource for managing people.
+ * REST resource for managing pets.
  * 
  * @author Patricia Martin Perez.
  */
@@ -44,11 +43,11 @@ public class PetsResource {
 	}
 	
 	/**
-	 * Returns a person with the provided identifier.
+	 * Returns a pet with the provided identifier.
 	 * 
-	 * @param id the identifier of the person to retrieve.
-	 * @return a 200 OK response with a person that has the provided identifier.
-	 * If the identifier does not corresponds with any user, a 400 Bad Request
+	 * @param id the identifier of the pet to retrieve.
+	 * @return a 200 OK response with a pet that has the provided identifier.
+	 * If the identifier does not corresponds with any pet, a 400 Bad Request
 	 * response with an error message will be returned. If an error happens
 	 * while retrieving the list, a 500 Internal Server Error response with an
 	 * error message will be returned.
@@ -78,9 +77,9 @@ public class PetsResource {
 	}
 
 	/**
-	 * Returns the complete list of people stored in the system.
+	 * Returns the complete list of pets stored in the system.
 	 * 
-	 * @return a 200 OK response with the complete list of people stored in the
+	 * @return a 200 OK response with the complete list of pets stored in the
 	 * system. If an error happens while retrieving the list, a 500 Internal
 	 * Server Error response with an error message will be returned.
 	 */
@@ -106,12 +105,12 @@ public class PetsResource {
 	}
 
 	/**
-	 * Creates a new person in the system.
+	 * Creates a new pet in the system.
 	 * 
-	 * @param name the name of the new person.
-	 * @param surname the surname of the new person.
-	 * @return a 200 OK response with a person that has been created. If the
-	 * name or the surname are not provided, a 400 Bad Request response with an
+	 * @param name the name of the new pet.
+	 * @param surname the surname of the new pet.
+	 * @return a 200 OK response with a pet that has been created. If the
+	 * name, species or owner are not provided, a 400 Bad Request response with an
 	 * error message will be returned. If an error happens while retrieving the
 	 * list, a 500 Internal Server Error response with an error message will be
 	 * returned.
@@ -143,13 +142,14 @@ public class PetsResource {
 	}
 
 	/**
-	 * Modifies the data of a person.
+	 * Modifies the data of a pet.
 	 * 
-	 * @param id identifier of the person to modify.
-	 * @param name the new name of the person.
-	 * @param surname the new surname of the person.
-	 * @return a 200 OK response with a person that has been modified. If the
-	 * identifier does not corresponds with any user or the name or surname are
+	 * @param id identifier of the pet to modify.
+	 * @param name the new name of the pet.
+	 * @param species the new species of the pet.
+	 * @param breed the new breed of the pet.
+	 * @return a 200 OK response with a pet that has been modified. If the
+	 * identifier does not corresponds with any pet or the name or species are
 	 * not provided, a 400 Bad Request response with an error message will be
 	 * returned. If an error happens while retrieving the list, a 500 Internal
 	 * Server Error response with an error message will be returned.
@@ -192,11 +192,11 @@ public class PetsResource {
 	}
 
 	/**
-	 * Deletes a person from the system.
+	 * Deletes a pet from the system.
 	 * 
-	 * @param id the identifier of the person to be deleted.
-	 * @return a 200 OK response with the identifier of the person that has
-	 * been deleted. If the identifier does not corresponds with any user, a 400
+	 * @param id the identifier of the pet to be deleted.
+	 * @return a 200 OK response with the identifier of the pet that has
+	 * been deleted. If the identifier does not corresponds with any pet, a 400
 	 * Bad Request response with an error message will be returned. If an error
 	 * happens while retrieving the list, a 500 Internal Server Error response
 	 * with an error message will be returned.

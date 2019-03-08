@@ -23,9 +23,14 @@ var PetsView = (function() {
 		this.init = function() {
 			
 			dao.listPetsOwner(idOwner,function(pets) {
+				if(pets.length==0){
+					console.log("null pets");
+					$('div.table-responsive').before('<h2 id="withoutPets">No tienes ninguna mascota! Prueba a adoptar una.</h2>');
+				}else{
 				$.each(pets, function(key, pet) {
 					appendToTable(pet);
 				});
+				}
 			});
 			
 			// La acción por defecto de enviar formulario (submit) se sobreescribe
@@ -46,6 +51,7 @@ var PetsView = (function() {
 						self.enableForm
 					);
 				} else {
+					$('h2#withoutPets').remove();
 					dao.addPet(pet,
 						function(pet) {
 							appendToTable(pet);
@@ -172,7 +178,7 @@ var PetsView = (function() {
 						<input name="species" type="text" value="" placeholder="Especie" class="form-control" required/>\
 					</div>\
 					<div class="col-sm-2">\
-						<input name="breed" type="text" value="" placeholder="Raza" class="form-control" required/>\
+						<input name="breed" type="text" value="" placeholder="Raza" class="form-control"/>\
 					</div>\
 					<div class="col-sm-3">\
 						<input id="btnSubmit" type="submit" value="Adoptar" class="btn btn-primary" />\
