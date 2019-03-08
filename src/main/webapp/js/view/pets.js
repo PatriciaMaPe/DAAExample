@@ -24,7 +24,6 @@ var PetsView = (function() {
 			
 			dao.listPetsOwner(idOwner,function(pets) {
 				if(pets.length==0){
-					console.log("null pets");
 					$('div.table-responsive').before('<h2 id="withoutPets">No tienes ninguna mascota! Prueba a adoptar una.</h2>');
 				}else{
 				$.each(pets, function(key, pet) {
