@@ -1,9 +1,20 @@
 DAAExample
 ==========
 
+Application and example architecture for the subject "Agile Development of
+Applications" of the Degree in Computer Engineering of the Higher School of
+Computer Engineering at the University of Vigo.
+
+This application allows you to manage pet adoption.
+____________________________
 Aplicación y arquitectura de ejemplo para la asignatura Desarrollo Ágil de
 Aplicaciones del Grado en Ingeniería Informática de la Escuela Superior de
 Ingeniería Informática de la Universidad de Vigo.
+
+Esta aplicación te permite gestionar la adopción de mascotas.
+
+## Preview
+![DAAExamplePreview](https://user-images.githubusercontent.com/13262676/72690461-ed9f8900-3b1c-11ea-8cf9-bdaae9e3f03f.gif)
 
 ## Ejecución con Maven
 La configuración de Maven ha sido preparada para permitir varios tipos de
